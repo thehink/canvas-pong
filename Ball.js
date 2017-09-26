@@ -9,9 +9,11 @@ class Ball extends Box {
             y: 0,
         }
 
+
+        this.radius = 10;
         this.speed = 10;
 
-        
+        this.width = this.height = this.radius * 2;
     }
 
     reset() {
@@ -65,5 +67,13 @@ class Ball extends Box {
         if(this.position.y <= 0){
             this.velocity.y *= -1;
         }
+    }
+
+    render(ctx) {
+        ctx.beginPath();
+        ctx.fillStyle = 'green';
+        ctx.arc(this.position.x + this.radius, this.position.y + this.radius, this.radius, 0, 2 * Math.PI, false);
+        ctx.fill();
+        ctx.stroke();
     }
 }

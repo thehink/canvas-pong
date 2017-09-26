@@ -1,10 +1,12 @@
 
 
 class Player extends Box {
-    constructor(left) {
+    constructor(options) {
         super();
 
-        this.left = left;
+        this.left = false;
+
+        Object.assign(this, options);
 
         this.width = 10;
         this.height = 100;

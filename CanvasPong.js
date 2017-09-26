@@ -12,10 +12,18 @@ class CanvasPong {
         //array containing items that will be rendered on screen
         this.renderItems = [];
 
+        const numBalls = 10;
+
         //init objects
-        this.ball = new Ball();
-        this.player1 = new Player(true);
-        this.player2 = new Player();
+        //this.ball = new Ball();
+        this.player1 = new Player({
+            left: true,
+            color: 'red',
+        });
+        this.player2 = new Player({
+            left: false,
+            color: 'blue',
+        });
         this.score = new Score();
 
         //resize canvas
@@ -23,9 +31,13 @@ class CanvasPong {
 
         //add render objects to render loop
         this.add(this.score);
-        this.add(this.ball);
+        //this.add(this.ball);
         this.add(this.player1);
         this.add(this.player2);
+
+        for(let i = 0; i < numBalls; ++i){
+            this.add(new Ball());
+        }
 
         window.addEventListener('resize', this.resize.bind(this));
         
